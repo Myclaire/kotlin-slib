@@ -6,9 +6,6 @@ import com.chsy.kotlindemo.entity.dto.AuthorDto
 import com.chsy.kotlindemo.utils.DateNormal
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
-import java.text.SimpleDateFormat
-import java.time.LocalTime
-
 @Service
 class AuthorService {
 
@@ -31,7 +28,11 @@ class AuthorService {
         return authorDao.selectAll()
     }
 
-    fun updateAuthor(author: Author): Int {
+    fun updateAuthor(authorDto: AuthorDto): Int {
+        var author = Author()
+        author.realName = authorDto.realName
+        author.nickName = authorDto.nickName
+        author.updateTime = DateNormal().nowTime()
         return authorDao.updateAuthor(author)
     }
 
