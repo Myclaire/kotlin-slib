@@ -1,11 +1,11 @@
-package com.chsy.kotlindemo
+package com.chsy.fct
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class KotlinDemoApplication
+class FctApplication
 
 fun main(args: Array<String>) {
-	runApplication<KotlinDemoApplication>(*args)
+	runApplication<FctApplication>(*args)
 }
