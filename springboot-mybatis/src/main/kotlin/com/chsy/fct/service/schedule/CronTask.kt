@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.scheduling.TaskScheduler
+import org.springframework.scheduling.annotation.EnableScheduling
 import org.springframework.scheduling.annotation.Scheduled
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler
 import org.springframework.stereotype.Component
@@ -20,7 +21,7 @@ class CronTask {
 
     private val random = Random()
 
-    val log = LoggerFactory.getLogger(CronTask::class.java)
+    private val log = LoggerFactory.getLogger(CronTask::class.java)
 
     @Autowired
     var cronService: CronService? = null

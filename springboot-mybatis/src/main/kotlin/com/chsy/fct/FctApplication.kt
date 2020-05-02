@@ -6,7 +6,7 @@ import org.springframework.scheduling.annotation.EnableScheduling
 
 @SpringBootApplication
 //@MapperScan("com.chsy.fct.mapper")
-@EnableScheduling
+//@EnableScheduling
 class FctApplication
 
 fun main(args: Array<String>) {
