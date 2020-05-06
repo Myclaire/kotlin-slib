@@ -1,43 +1,33 @@
 package com.chsy.fct.controller
 
-import com.chsy.fct.config.Authentication
 import com.chsy.fct.service.UserService
-import com.chsy.kotlindemo.config.result.ResponseBody
 import com.chsy.kotlindemo.config.result.RestResult
+import com.chsy.kotlindemo.config.result.RestUtil
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.cache.annotation.Cacheable
+import org.springframework.cache.annotation.EnableCaching
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
-import java.lang.RuntimeException
-import kotlin.math.log
 
+@EnableCaching
 @RestController
 @RequestMapping("user")
 class UserController {
 
     private val log = LoggerFactory.getLogger(UserController::class.java)
 
-//    @Autowired
-//    private lateinit var userService: UserService
-//
-//    @RequestMapping("info")
-//    fun getUserInfo(@RequestParam("user_id") id: Int): ResponseBody {
-//        return RestResult().success(userService.getUserInfo(id))
-//    }
+    @Autowired
+    private lateinit var userService: UserService
 
-    @Authentication(true)
     @GetMapping("info")
-    fun getUserInfo(): ResponseBody {
-        log.info("------info api in------")
-        return RestResult().success("OK")
+    @Cacheable(value = ["user"])
+    fun getUserInfo(@RequestParam("user_id") id: Int): RestResult {
+        return RestUtil.success(userService.getUserInfo(id))
     }
 
-    @GetMapping("log")
-    fun getLog(): String {
-        log.info("-----log api in----")
-        return "OK"
-    }
+
 
 }

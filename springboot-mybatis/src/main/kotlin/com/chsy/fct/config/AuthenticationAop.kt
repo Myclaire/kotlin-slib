@@ -29,26 +29,26 @@ class AuthenticationAop {
     fun pointCut() {
     }
 
+    @Before("pointCut()")
+    fun storeInfo() {
+        log.info("-----------verify user privilege------------")
+    }
+
 //    //环绕通知同时完成前置和后置通知
 //    @Around("pointCut()")
 //    fun checkLogin() {
 //        log.info("------------check login success----------")
 //    }
 
-    @Before("pointCut()")
-    fun storeInfo() {
-        log.info("-----------store user info------------")
-    }
-
-    @AfterReturning("pointCut()")
-    fun successExecute() {
-        log.info("--------after returning no exception-----------")
-    }
-
-    @AfterThrowing("pointCut()")
-    fun exceptionExecute() {
-        log.info("--------some exception--------")
-    }
+//    @AfterReturning("pointCut()")
+//    fun successExecute() {
+//        log.info("--------after returning no exception-----------")
+//    }
+//
+//    @AfterThrowing("pointCut()")
+//    fun exceptionExecute() {
+//        log.info("--------some exception--------")
+//    }
 
 
 }
